@@ -32,7 +32,9 @@ export default function Layout({ children, withCanvas=true }: { children: any, w
                         </Center>                       
                     </Suspense>
                 </Canvas>:
+                <>
                 {children}
+                </>
             }                              
             </main>
         </>
