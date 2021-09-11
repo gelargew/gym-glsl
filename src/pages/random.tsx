@@ -19,7 +19,7 @@ export default function Circle() {
     return (
         <>
         <Helmet>
-            <title>circle</title>
+            <title>random</title>
         </Helmet>
         <Layout>
             

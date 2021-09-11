@@ -5,12 +5,12 @@ import React, { useRef } from 'react'
 import Layout from '../components/Layout'
 import * as THREE from 'three'
 import { Helmet } from 'react-helmet'
-import MosaicShader from '../shaders/mosaic.shader'
+import CircleWaveShader from '../shaders/circleWave.shader'
 
 
-const MosaicMaterial = shaderMaterial(...MosaicShader)
+const CircleWaveMaterial = shaderMaterial(...CircleWaveShader)
   
-extend({ MosaicMaterial })
+extend({ CircleWaveMaterial })
 
 
 
@@ -19,7 +19,7 @@ export default function Circle() {
     return (
         <>
         <Helmet>
-            <title>mosaic</title>
+            <title>circleWave</title>
         </Helmet>
         <Layout>
             
@@ -40,8 +40,6 @@ function Obj() {
     const plane = useRef<THREE.Object3D>()
   
     useFrame((state, delta) => {
-      plane.current.rotateZ(0.01)
-      plane.current.rotateY(0.005)
       plane.current.material.uniforms.time.value += delta
       plane.current.position.x = Math.sin(state.clock.getElapsedTime())
       plane.current.material.uniforms.uMouse.value = state.mouse
@@ -49,7 +47,7 @@ function Obj() {
     })
     return (
       <Box ref={plane} args={[3, 4, 5, 100]} position={[1, 0, 0]} rotation={[1, 0.4, 1]} >
-        <mosaicMaterial side={THREE.DoubleSide} time={0} resolution={[size.width, size.height, 1]} />
+        <circleWaveMaterial side={THREE.DoubleSide} time={0} resolution={[size.width, size.height, 1]} />
       </Box>
     )
   }

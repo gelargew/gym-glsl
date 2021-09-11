@@ -7,8 +7,9 @@ import '../global.css'
 const ROUTES = [
     'mosaic',
     'random',
-    'distanceField',
-    'circle'
+    'circleWave',
+    'circle',
+    'lavaLamp'
 ]
 
 
@@ -17,7 +18,7 @@ export default function Layout({ children, withCanvas=true }: { children: any, w
     return (
         <>
             <div id='navigation'>
-                {ROUTES.map(route => <Link key='route' to={`/${route}`}>{route}</Link>)}
+                {ROUTES.map(route => <Link key={route} to={`/${route}`}>{route}</Link>)}
             </div>
             <main>
                 {withCanvas ?
