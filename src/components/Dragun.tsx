@@ -8,11 +8,12 @@ import hsbPolar from '../shaders/hsbPolar.shader'
 import RectangleShader from '../shaders/rectangle.shader'
 import CircleShader from '../shaders/circle.shader'
 
-const ColorMaterial = shaderMaterial(...CircleShader)
 
-extend({ ColorMaterial })
 
 function Ob() {
+  const ColorMaterial = shaderMaterial(...CircleShader)
+
+  extend({ ColorMaterial })
   const {size} = useThree()
   const VP = new THREE.Vector2()
   const plane = useRef<THREE.Object3D>()

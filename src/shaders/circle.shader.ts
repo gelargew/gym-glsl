@@ -1,6 +1,8 @@
+import { shaderMaterial } from '@react-three/drei'
+import { extend, Object3DNode } from '@react-three/fiber'
 import * as THREE from 'three'
 
-const CircleShader = [
+const CircleShader: [any, string, string] = [
     {
         time: 0.,
         resolution: new THREE.Vector3(),
@@ -24,10 +26,12 @@ const CircleShader = [
       void main() {
           float pct = 0.0;
           pct = distance(vUv, vec2(0.5));
-          vec3 color = vec3(pct);
+          vec3 color = vec3(step(0.5, 1. - pct));
           gl_FragColor = vec4(color, 1.0);
       }
       `
 ]
 
 export default CircleShader
+
+
