@@ -27,23 +27,21 @@ const MosaicShader: [any, string, string] = [
       varying vec2 vUv;
       
       float random (vec2 st) {
+
         return fract(sin(dot(st.xy,
                              vec2(.4,2.)))*
-            (4600.+time));
+            (10.+time)*(1.+4.*step(abs(uMouse.x), 0.3)));
     }
     
     void main() {
         vec2 st = vUv;
     
-        st *= 10.0; // Scale the coordinate system by 10
-        vec2 ipos = floor(st);  // get the integer coords
-        vec2 fpos = fract(st);  // get the fractional coords
+        st *= 10.0; 
+        vec2 ipos = floor(st); 
+        vec2 fpos = fract(st);  
     
         // Assign a random value based on the integer coord
         vec3 color = vec3(random( ipos ));
-    
-        // Uncomment to see the subdivided grid
-        //color = vec3(fpos,0.0);
     
         gl_FragColor = vec4(color,1.0);
     }

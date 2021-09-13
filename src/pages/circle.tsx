@@ -21,7 +21,7 @@ export default function Circle() {
         <Helmet>
             <title>circle</title>
         </Helmet>
-        <Layout>
+        <Layout code={CircleShader[2]} >
             
             <Obj />
         </Layout>
@@ -47,7 +47,7 @@ function Obj() {
     })
     return (
       <Plane ref={plane} args={[5, 5, 100, 100]} position={[1, 0, 0]} >
-        <customMaterial side={THREE.DoubleSide} resolution={[size.width, size.height, 1]} />
+        <customMaterial side={THREE.DoubleSide}  />
       </Plane>
     )
   }

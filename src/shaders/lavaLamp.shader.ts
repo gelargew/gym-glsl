@@ -17,7 +17,7 @@ const LavaLampShader: [any, string, string] = [
       }
       `,
       `
-      #ifdef GL_ES
+      #ifdef GL_ES \n
       precision mediump float;
       #endif
       

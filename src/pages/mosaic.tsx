@@ -21,7 +21,7 @@ export default function Circle() {
         <Helmet>
             <title>mosaic</title>
         </Helmet>
-        <Layout>
+        <Layout code={MosaicShader[2]}>
             
             <Obj />
         </Layout>
