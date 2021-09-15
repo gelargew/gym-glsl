@@ -5,6 +5,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 import '../global.css'
 
 const ROUTES = [
+    'backgroundParticle',
     'mosaic',
     'random',
     'circleWave',
