@@ -1,0 +1,25 @@
+
+svg:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+svg {
+    left: 50%;
+    transition: 0.4s;
+}
+
+.iconed-button {
+    width: 200px;
+    height: 200px;
+    display: block;
+
+}
+
+.ripple {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+}

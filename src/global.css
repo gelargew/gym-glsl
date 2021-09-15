@@ -2,7 +2,6 @@ html, body, main {
     background: black;
     margin: 0;
     padding: 0;
-    width: 100vw;
     height: 100vh;
     color: white;
 }
@@ -90,4 +89,22 @@ button:hover {
 code {
     white-space: pre-line;
     transition: 0.3s;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+}
+
+.about {
+    place-self: center;
+    width: 60%;
+    max-width: 500px;
+    font-size: large;
+    color: rgba(255, 255, 255, 0.671);
+}
+
+svg {
+    fill: white;
 }
