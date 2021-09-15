@@ -5,6 +5,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import Layout from '../components/Layout'
 import * as THREE from 'three'
 import { Helmet } from 'react-helmet'
+import { MeshSurfaceSampler } from 'three-stdlib'
 
 import BackgroundParticleShader from '../shaders/backgroundParticle.shader'
 
@@ -42,11 +43,15 @@ function Obj() {
     const progressArray = new Float32Array(count)
     const sizeArray = new Float32Array(count)
     const alphaArray = new Float32Array(count)
+    const text = new THREE.Mesh(new THREE.SphereGeometry(5, 10,10))
+    const sampler = new MeshSurfaceSampler(text).build()
+    const _sample = new THREE.Vector3()
     for(let i = 0; i < count; i++)
     {
-        positionArray[i * 3 + 0] = (Math.random() - 0.5) * 20
-        positionArray[i * 3 + 1] = 0
-        positionArray[i * 3 + 2] = (Math.random() - 0.5) * 10
+        sampler.sample(_sample)
+        positionArray[i * 3 + 0] = _sample.x
+        positionArray[i * 3 + 1] = _sample.y
+        positionArray[i * 3 + 2] = _sample.z
         
         progressArray[i] = Math.random()
 
