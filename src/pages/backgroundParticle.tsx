@@ -45,6 +45,7 @@ function Obj() {
     const sizeArray = new Float32Array(count)
     const alphaArray = new Float32Array(count)
     const text = new THREE.Mesh(new THREE.BoxGeometry(2, 15, 1))
+    text.position.set(20, 0, 0)
     const sampler = new MeshSurfaceSampler(text).build()
     const _sample = new THREE.Vector3()
     const isMorphing = useState(false)
@@ -78,10 +79,10 @@ function Obj() {
     })
     return (
         <>
-      <points scale={2} ref={obj} args={[geometry]} position={[0, -100, 0]} >
-          <backgroundParticleMaterial attach='material' uMask={texture} depthTest={false} transparent blending={THREE.AdditiveBlending} />
-      </points>
-      </>
+            <points scale={2} ref={obj} args={[geometry]} >
+                <backgroundParticleMaterial attach='material' uMask={texture} depthTest={false} transparent blending={THREE.AdditiveBlending} />
+            </points>
+        </>
 
     )
   }

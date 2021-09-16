@@ -10,7 +10,8 @@ const ROUTES = [
     'random',
     'circleWave',
     'circle',
-    'lavaLamp'
+    'lavaLamp',
+    'particleTween'
 ]
 
 
