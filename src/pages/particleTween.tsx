@@ -51,7 +51,7 @@ function Obj() {
 
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positionArray, 3))
 
-    const mesh = new THREE.Mesh(new THREE.SphereGeometry(50))
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(1))
     const sampler = new MeshSurfaceSampler(mesh).build()
     for (let i = 0; i < count; i++) {
         sampler.sample(_sample)
@@ -65,12 +65,12 @@ function Obj() {
     useFrame((state, delta) => {
         if (obj.current) {
             obj.current.material.uniforms.uTime.value += delta 
-            obj.current.material.uniforms.morphProgress.value = Math.sin(state.clock.getElapsedTime() * 0.5)
+            obj.current.material.uniforms.morphProgress.value = (Math.cos(state.clock.getElapsedTime()*0.4) + 1)
         }     
     })
     return (
         <>
-            <points scale={2} ref={obj} args={[geometry]} >
+            <points scale={1} ref={obj} args={[geometry]} >
                 <particleTweenMaterial attach='material' uMask={texture} depthTest={false} transparent blending={THREE.AdditiveBlending} />
             </points>
         </>
