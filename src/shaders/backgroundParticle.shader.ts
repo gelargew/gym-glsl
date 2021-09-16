@@ -2,6 +2,7 @@
 import * as THREE from 'three'
 import glsl from 'babel-plugin-glsl/macro'
 import { useTexture } from '@react-three/drei'
+import { simplex3D } from './simplexNoises'
 
 const getTexture = () => {
   const texture = useTexture('/particleMask.png')
@@ -11,14 +12,14 @@ const getTexture = () => {
 const BackgroundParticle: [any, string, string] = [
     {
         uTime: 0,
-        uSize: 25,
+        uSize: 5,
         uProgressSpeed: 0.1,
         uPerlinFrequency: 0.1,
         uPerlinMultiplier: 5,
         uMask: undefined,
         uMouse: undefined
       },
-      glsl`
+      `
       #ifdef GL_ES \n
       precision mediump float;
       #endif
@@ -36,14 +37,14 @@ const BackgroundParticle: [any, string, string] = [
       varying vec3 vUv;
       varying float vAlpha;
 
-      #pragma glslify: snoise3 = require(glsl-noise/simplex/3d) 
+      ${simplex3D}
 
       void main()	{
         vUv = position;
         float progress = mod(aProgress + uTime * uProgressSpeed, 1.);
         vec4 modelPosition = modelMatrix * vec4(position, 1.);
         modelPosition.y += progress * 10.;
-        float pos = snoise3((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.))* uPerlinFrequency)* uPerlinMultiplier;
+        float pos = snoise((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.))* uPerlinFrequency)* uPerlinMultiplier;
         modelPosition.xy += pos;
         
         
@@ -57,7 +58,7 @@ const BackgroundParticle: [any, string, string] = [
         vAlpha = aAlpha;
       }
       `,
-      glsl`
+      `
       #ifdef GL_ES \n
       precision mediump float;
       #endif
@@ -69,11 +70,11 @@ const BackgroundParticle: [any, string, string] = [
       varying float vAlpha;
       varying vec3 vUv;
 
-      #pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
+      ${simplex3D}
       
       void main()
       {
-          vec3 color = vec3(snoise3(vUv*uTime*0.01), 0.5, 0.5);
+          vec3 color = vec3(snoise(vUv*uTime*0.01), 0.5, 0.5);
           float maskStrength = texture2D(uMask, gl_PointCoord).r;
           gl_FragColor = vec4(color, maskStrength * 2.);
       }

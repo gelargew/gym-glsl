@@ -35,7 +35,7 @@ export default function BackgroundParticle() {
 
 
 function Obj() {
-    const count = 30000
+    const count = 300000
     const {camera} = useThree()
     const obj = useRef<THREE.Object3D>()
     const texture = useTexture('/particleMask.png')
@@ -57,7 +57,7 @@ function Obj() {
         
         progressArray[i] = Math.random()
 
-        sizeArray[i] = Math.random()*2
+        sizeArray[i] = Math.random()*5
 
         alphaArray[i] = Math.random()
     }
@@ -78,7 +78,7 @@ function Obj() {
     })
     return (
         <>
-      <points ref={obj} args={[geometry]} position={[0, -100, 0]} >
+      <points scale={2} ref={obj} args={[geometry]} position={[0, -100, 0]} >
           <backgroundParticleMaterial attach='material' uMask={texture} depthTest={false} transparent blending={THREE.AdditiveBlending} />
       </points>
       </>
