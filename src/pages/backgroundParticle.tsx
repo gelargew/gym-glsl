@@ -35,7 +35,7 @@ export default function BackgroundParticle() {
 
 
 function Obj() {
-    const count = 1000
+    const count = 50000
     const obj = useRef<THREE.Object3D>()
     const texture = useTexture('/particleMask.png')
     const geometry = new THREE.BufferGeometry()
@@ -43,7 +43,7 @@ function Obj() {
     const progressArray = new Float32Array(count)
     const sizeArray = new Float32Array(count)
     const alphaArray = new Float32Array(count)
-    const text = new THREE.Mesh(new THREE.SphereGeometry(5, 10,10))
+    const text = new THREE.Mesh(new THREE.BoxGeometry(2, 15, 2))
     const sampler = new MeshSurfaceSampler(text).build()
     const _sample = new THREE.Vector3()
     for(let i = 0; i < count; i++)
@@ -55,7 +55,7 @@ function Obj() {
         
         progressArray[i] = Math.random()
 
-        sizeArray[i] = Math.random()
+        sizeArray[i] = Math.random()*2
 
         alphaArray[i] = Math.random()
     }
@@ -66,19 +66,18 @@ function Obj() {
     geometry.setAttribute('aAlpha', new THREE.Float32BufferAttribute(alphaArray, 1))
 
 
-    useLayoutEffect(() => console.log(geometry.attributes), [])
-
     useFrame((state, delta) => {
         if (obj.current) {
             obj.current.material.uniforms.uTime.value += delta
+
  
         }
       
     })
     return (
         <>
-      <points ref={obj} args={[geometry]} >
-          <backgroundParticleMaterial attach='material' uMask={texture} />
+      <points ref={obj} args={[geometry]}>
+          <backgroundParticleMaterial attach='material' uMask={texture} depthTest={false} transparent blending={THREE.AdditiveBlending} />
       </points>
       </>
 
