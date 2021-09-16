@@ -21,7 +21,7 @@ export default function Circle() {
         <Helmet>
             <title>circleWave</title>
         </Helmet>
-        <Layout code={CircleWaveShader[2]} >
+        <Layout code={CircleWaveShader} >
             
             <Obj />
         </Layout>

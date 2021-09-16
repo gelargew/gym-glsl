@@ -12,7 +12,7 @@ const BackgroundParticle: [any, string, string] = [
     {
         uTime: 0,
         uSize: 25,
-        uProgressSpeed: 0.01,
+        uProgressSpeed: 0.1,
         uPerlinFrequency: 0.1,
         uPerlinMultiplier: 5,
         uMask: undefined,
@@ -43,7 +43,10 @@ const BackgroundParticle: [any, string, string] = [
         float progress = mod(aProgress + uTime * uProgressSpeed, 1.);
         vec4 modelPosition = modelMatrix * vec4(position, 1.);
         modelPosition.y += progress * 10.;
-        modelPosition.x += snoise3((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.))* uPerlinFrequency)* uPerlinMultiplier;
+        float pos = snoise3((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.))* uPerlinFrequency)* uPerlinMultiplier;
+        modelPosition.xy += pos;
+        
+        
         
         vec4 viewPosition = viewMatrix * modelPosition;
         gl_Position = projectionMatrix * viewPosition;

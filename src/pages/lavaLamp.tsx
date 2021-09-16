@@ -22,7 +22,7 @@ export default function Circle() {
         <Helmet>
             <title>lavaLamp</title>
         </Helmet>
-        <Layout code={LavaLampShader[2]} >
+        <Layout code={LavaLampShader} >
             
             <Obj />
         </Layout>

@@ -16,7 +16,7 @@ const ROUTES = [
 
 export default function Layout(
     { children, withCanvas=true, code }: 
-    { children: any, withCanvas?: boolean, code?: string }) {
+    { children: any, withCanvas?: boolean, code?: [any, string, string] }) {
     const [codeClass, setCodeClass] = useState('code-container code-hidden')
     
 
@@ -57,8 +57,13 @@ export default function Layout(
             }
                 
                 <div>
+                    <h4>vertex shader: </h4>
                     <code>
-                        {code}
+                        {code[1]}
+                    </code>
+                    <h4>fragment shader: </h4>
+                    <code>
+                        {code[2]}
                     </code>
                 </div>
             </div>

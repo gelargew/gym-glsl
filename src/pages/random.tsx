@@ -21,7 +21,7 @@ export default function Circle() {
         <Helmet>
             <title>random</title>
         </Helmet>
-        <Layout code={RandomShader[2]} >
+        <Layout code={RandomShader} >
             
             <Obj />
         </Layout>
