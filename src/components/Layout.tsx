@@ -11,7 +11,8 @@ const ROUTES = [
     'circleWave',
     'circle',
     'lavaLamp',
-    'particleTween'
+    'particleTween',
+    'traverseModel'
 ]
 
 

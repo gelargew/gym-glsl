@@ -13,9 +13,9 @@ const BackgroundParticle: [any, string, string] = [
     {
         uTime: 0,
         uSize: 5,
-        uProgressSpeed: 0.1,
+        uProgressSpeed: 0.01,
         uPerlinFrequency: 0.1,
-        uPerlinMultiplier: 5,
+        uPerlinMultiplier: 10,
         uMask: undefined,
         uMouse: undefined
       },
@@ -44,7 +44,7 @@ const BackgroundParticle: [any, string, string] = [
         float progress = mod(aProgress + uTime * uProgressSpeed, 1.);
         vec4 modelPosition = modelMatrix * vec4(position, 1.);
         modelPosition.y += progress * 10.;
-        float pos = snoise((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.))* uPerlinFrequency)* uPerlinMultiplier;
+        float pos = snoise((modelPosition.xyz + vec3(0.,uTime * 0.5, 0.8))* uPerlinFrequency)* uPerlinMultiplier;
         modelPosition.xy += pos;
         
         
@@ -74,7 +74,7 @@ const BackgroundParticle: [any, string, string] = [
       
       void main()
       {
-          vec3 color = vec3(snoise(vUv*uTime*0.01), 0.5, 0.5);
+          vec3 color = vec3(.1, snoise(vUv * uTime*0.1), 0.6);
           float maskStrength = texture2D(uMask, gl_PointCoord).r;
           gl_FragColor = vec4(color, maskStrength * 2.);
       }

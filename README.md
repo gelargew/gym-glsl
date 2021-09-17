@@ -13,3 +13,7 @@
 - [Repulsive Curves](http://www.cs.cmu.edu/~kmcrane/Projects/RepulsiveCurves/index.html)
 - [webgl noises](https://github.com/ashima/webgl-noise)
 - [FBO particles](https://barradeau.com/blog/?p=621)
+
+
+##### todo
+- [] sample buffergeometry positions(vec3[]) from a model
