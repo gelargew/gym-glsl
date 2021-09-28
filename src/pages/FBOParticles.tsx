@@ -15,7 +15,7 @@ extend({ LavaLampMaterial })
 
 
 
-export default function Circle() {
+export default function FBOParticles() {
 
     return (
         <>

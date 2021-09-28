@@ -45,8 +45,8 @@ const LavaLampShader: [any, string, string] = [
         vel = vec2(cos(a), sin(a));
         DF += snoise(pos + vel)* .25 + .65;
         
-        color = vec3(smoothstep(.7, .75, fract(DF)));
-        gl_FragColor = vec4(color, 1.);
+        color = vec3(smoothstep(.5, .75, fract(DF)), 0., 0.);
+        gl_FragColor = vec4(color, .7);
         
     }
       `

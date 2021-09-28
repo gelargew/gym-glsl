@@ -1,13 +1,6 @@
-
-import * as THREE from 'three'
-import glsl from 'babel-plugin-glsl/macro'
-import { useTexture } from '@react-three/drei'
 import { simplex3D } from './simplexNoises'
 
-const getTexture = () => {
-  const texture = useTexture('/particleMask.png')
-  return texture
-}
+
 
 const BackgroundParticle: [any, string, string] = [
     {
